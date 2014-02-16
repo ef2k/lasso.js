@@ -1,7 +1,7 @@
 Lasso.js
 ========
 
-A jQuery plugin that hooks into events and sprinkles some 1-way data-binding.
+A jQuery plugin that hooks into events and sprinkles some 1-time data-binding.
 
 When you should use it
 ----------------------
@@ -67,3 +67,10 @@ $(SELECTOR).lasso(EVENT_TYPE, DATA_ARRAY, EVENT_HANDLER);
 * `EVENT_TYPE` - Any event supported by jQuery. E.g: `click`, `mouseover`, etc.
 * `DATA_ARRAY` - The data array you want to bind to.
 * `EVENT_HANDLER` - A normal jQuery event handler. The context of `this` will be the selected HTML element.
+
+TODO
+----
+
+* Add some tests.
+* Support object literals
+ 
