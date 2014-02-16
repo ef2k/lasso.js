@@ -7,12 +7,11 @@
 <body>
 
   <script type="text/x-handlebars" id="albums-table">
-    <table id="albums" border="1">
+    <table id="albums">
       <thead>
       <tr>
         <th>Title</th>
         <th>Artist</th>
-        <th>Controls</th>
       </tr>
       </thead>
       <tbody>
@@ -20,7 +19,6 @@
       <tr>
         <td>{{title}}</td>
         <td>{{artist}}</td>
-        <td><button class='delete-btn'>Delete</button></td>
       </tr>
       {{/each}}
       </tbody>
@@ -36,10 +34,11 @@
   <script>
     var musicLib = {
       albums: [
-        {title: 'Dark Side of the Moon', artist: 'Pink Floyd'},
-        {title: 'Mm..Food', artist: 'MF Doom'},
-        {title: 'Fade to Black', artist: 'Metallica'},
-        {title: "Reachin' (A New Refutation of Time and Space)", artist: 'Digable Planets'},
+        {id: 1, title: "Dark Side of the Moon", artist: "Pink Floyd"},
+        {id: 2, title: "Exile on Main St. Haze", artist: "The Rolling Stones"},
+        {id: 3, title: "London Calling", artist: "The Clash"},
+        {id: 4, title: "MM..Food", artist: "MF Doom"},
+        {id: 5, title: "Reachin'", artist: "Digable Planets"}
       ]
     };
 
@@ -51,7 +50,7 @@
     /** Use lasso to bind the table rows to some data. **/
     $("#albums tbody tr").lasso('click', musicLib.albums, function (evt) {
       var boundItem = evt.lasso.item;
-      alert(boundItem.title);
+      alert(boundItem.title + " by " + boundItem.artist);
     });
   </script>
 
