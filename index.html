@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events</title>
+</head>
+<body>
+
+  <script type="text/x-handlebars" id="albums-table">
+    <table id="albums" border="1">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Controls</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each albums}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{artist}}</td>
+        <td><button class='delete-btn'>Delete</button></td>
+      </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </script>
+
+  <div id="wrapper"></div>
+
+  <script src="bower_components/handlebars/handlebars.min.js"></script>
+  <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="js/lasso.js"></script>
+
+  <script>
+    var musicLib = {
+      albums: [
+        {title: 'Dark Side of the Moon', artist: 'Pink Floyd'},
+        {title: 'Mm..Food', artist: 'MF Doom'},
+        {title: 'Fade to Black', artist: 'Metallica'},
+        {title: "Reachin' (A New Refutation of Time and Space)", artist: 'Digable Planets'},
+      ]
+    };
+
+    // Some handlebars stuff for purposes of this demo.
+    var albumsTable = Handlebars.compile($("#albums-table").html()),
+        albumsHtml = albumsTable(musicLib);
+    $('#wrapper').html(albumsHtml);
+
+    /** Use lasso to bind the table rows to some data. **/
+    $("#albums tbody tr").lasso('click', musicLib.albums, function (evt) {
+      var boundItem = evt.lasso.item;
+      alert(boundItem.title);
+    });
+  </script>
+
+</body>
+</html>
